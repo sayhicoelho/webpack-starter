@@ -31,6 +31,36 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash:7].[ext]',
+            outputPath: 'img/'
+          }
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash:7].[ext]',
+            outputPath: 'fonts/'
+          }
+        }
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash:7].[ext]',
+            outputPath: 'media/'
+          }
+        }
       }
     ]
   }
