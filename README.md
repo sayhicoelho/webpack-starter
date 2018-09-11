@@ -1,5 +1,5 @@
 # Webpack Starter
-The Webpack Starter is a good start point to build front-end applications using Polyfill, Webpack & Babel.
+The Webpack Starter is a good start point to build front-end applications using Polyfill, Webpack, Babel & SASS.
 
 # Setup
 ```bash
