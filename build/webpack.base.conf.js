@@ -1,5 +1,6 @@
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: ['@babel/polyfill', './src/main.js'],
@@ -8,7 +9,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new Dotenv({ safe: true })
+    new Dotenv({ safe: true }),
+    new ExtractTextPlugin('css/styles.css')
   ],
   module: {
     rules: [
@@ -25,12 +27,18 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.(png|jpe?g|gif|svg|webp)(\?.*)?$/,
