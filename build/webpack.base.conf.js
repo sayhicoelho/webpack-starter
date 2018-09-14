@@ -6,7 +6,7 @@ module.exports = {
   entry: ['@babel/polyfill', './src/main.js'],
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'bundle.js'
+    filename: 'js/bundle.js'
   },
   plugins: [
     new Dotenv({ safe: true }),
